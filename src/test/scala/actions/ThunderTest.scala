@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package actions
 
+import actions.ofensives.Thunder
+
 import munit.FunSuite
 
 import scala.compiletime.uninitialized
@@ -13,6 +15,6 @@ class ThunderTest extends FunSuite {
   }
 
   test("Thunder invoked"){
-    assertEquals(obtained = action.getActionName(), expected = "Thunder")
+    assertEquals(obtained = action.getActionName, expected = "Thunder")
   }
 }

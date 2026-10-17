@@ -11,6 +11,9 @@ abstract class AbstractAction extends Action {
   /**
    * method to deploy name
    */
-  override def getActionName(): String =
+  override def getActionName: String =
     name
+    
+    
+  
 }

@@ -1,20 +1,24 @@
 package cl.uchile.dcc
 package items.weapons
 
-import items.Item
-
-import cl.uchile.dcc.persons.Person
-
 /**
- * Abstract weapons:
- * 
- *  category: sword, bow, ...
- *  can be physical or magical
+ * encapsulates the common methods for every weapon
  */
+abstract class AbstractWeapon extends Weapon {
+  /**
+   * every weapon has weight
+   */
+  protected var weaponWeight: Float
 
-abstract class AbstractWeapon(var name: String, override val owner: Person) extends Weapon {
-  val category: String
-  
-  val dmgType: String
-  var dmgPoints: Int
+  /**
+   * weapon outputs its weight
+   *  @return number as weight
+   */
+  override def getWeight: Float = weaponWeight
+
+  /**
+   * weapon use is an attack
+   */
+  override def use(): Unit =
+    println(s"Attacking with $name for $dmgPoints.")
 }

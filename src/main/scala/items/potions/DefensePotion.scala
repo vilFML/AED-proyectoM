@@ -11,6 +11,4 @@ class DefensePotion extends AbstractPotion{
   override def use(): Unit =
     println(s"$name consumed. Gained $points of defense. ")
 
-  override val owner: Person = ???
-  override val weight: Int = ???
 }

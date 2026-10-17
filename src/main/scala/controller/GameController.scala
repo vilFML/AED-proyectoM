@@ -1,6 +1,9 @@
 package cl.uchile.dcc
 package controller
 
-class GameController {
-  ???
-}
+/**
+ * game controller
+ */
+class GameController
+
+

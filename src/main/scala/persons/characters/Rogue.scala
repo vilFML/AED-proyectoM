@@ -1,9 +1,8 @@
 package cl.uchile.dcc
 package persons.characters
 
-import items.Item
 
-class Rogue(name: String) extends AbstractCharacter(name){
+class Rogue(name: String = "Rogue") extends AbstractCharacter(name) {
   var healthPoints: Int = 50
   var attackPoints: Int = 35
   var defensePoints: Int = 5
@@ -11,6 +10,4 @@ class Rogue(name: String) extends AbstractCharacter(name){
 
   override val attackType: String = "Physical"
   val role: String = "Rogue"
-
-  var inventory: Set[Item] = Set[Item]()
 }

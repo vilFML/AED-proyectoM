@@ -3,6 +3,8 @@ package turns
 
 import persons.Person
 
+import scala.collection.mutable.ListBuffer
+
 /**
  * Controls game turn logic
  */
@@ -18,16 +20,21 @@ trait TurnSchedulerTrait {
   def removeUnit(character: Person): Unit
 
   /**
-   * get every max action bars
+   * get if pj is currently in its turn
    */
+  def isInTurn(character: Person): Boolean
 
   /**
    * to get the size of the in-turn character set
+   *
    * @return
    */
-  def size: Int
+  def getTotalManagedCharacters: Int
 
-  def getMaxActionBars(): Unit
+  /**
+   * calculate every max action bar for in-turn pjs
+   */
+  def calculateAllMaxActionBars(): Unit
 
   /**
    * restart units action bars
@@ -37,21 +44,29 @@ trait TurnSchedulerTrait {
   /**
    * increase every action bar by a magnitude
    */
-  def increaseActionBars(amount: Int): Unit
+  def increaseActionBars(amount: Float): Unit
 
   /**
    * signal if a unit completed its action bar
    */
-  def notifyCompletedActionBar(): Unit
+  def notifyCompletedActionBar(character: Person): Unit
 
   /**
    * output units with completed action bars
-   *  order: action bar surplus after completing
+   * ordered by descending surplus
+   * @return a list to store order
    */
-  def completedActionBarsUnits(): Unit
+  def getCompletedActionBarsUnits: List[(String, Float)]
 
   /**
    * output the unit in turn
+   * gives access to the object
    */
-  def outputUnitInTurn(): String
+  def getInTurnUnit: Option[Person]
+
+  /**
+   * can modify the currently in-turn character
+   * returns true if changed pj
+   */
+  def setInTurnUnit(character: Person): Boolean
 }

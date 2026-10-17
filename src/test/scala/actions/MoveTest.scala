@@ -14,6 +14,6 @@ class MoveTest extends FunSuite {
   }
 
   test("move invoked."){
-    assertEquals(obtained = action.getActionName(), expected = "Move")
+    assertEquals(obtained = action.getActionName, expected = "Move")
   }
 }

@@ -1,40 +1,66 @@
 package cl.uchile.dcc
 package persons
 
-import map.Panel
-
 
 /**
- * ENEMIGO
- *1. Nombre
- *2. Puntos de vida
- *3. Puntos de Ataque
- *4. Puntos de Defensa
- *5. Peso
+ * class for enemy units
  */
-class Enemy(override val name: String) extends Person{
-
-  var healthPoints: Int = 100
-  var attackPoints: Int = 10
-  var defensePoints: Int = 20
-  
-  var weight: Int = 30
-  
-  var isHostile: Boolean = true
+class Enemy{
 
   /**
-   * initializes with 100 points for actions
+   *  name defaults to "Enemy"
    */
-  override val maxActionPoints: Int = 100
+  var name: String = "Enemy"
+
+  /**
+   *  starts with 100 health points
+   */
+  var healthPoints: Int = 100
+
+  /**
+   *  attack points default to 100
+   */
+  var attackPoints: Int = 1
+
+  /**
+   *  defense points default to 20
+   */
+  var defensePoints: Int = 20
+
+  /**
+   * weight defaults to 30
+   */
+  private var weight: Float = 30.0
+
+  /**
+   * is always hostile
+   */
+  private val isHostile: Boolean = true
+  
+  /**
+   * every enemy is hostile
+   */
+  def getHostility: Boolean =
+    isHostile
+
+  /**
+   * 100 action points base,
+   * weight decreases action points available
+   */
+  protected val maxActionPoints: Float = 100 - this.weight
 
   /**
    * starts with full action points
    */
-  override val currentActionPoints: Int = maxActionPoints
+  val currentActionPoints: Float = maxActionPoints
+
+  def getWeight: Float =
+    this.weight
 
   /**
    * calculate the max action points for the PJ
    */
-  override def calculateMaxActionPoints(): Int = ???
+  def getMaxActionPoints: Float =
+    100 - this.weight
 }
 

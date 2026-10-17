@@ -14,6 +14,4 @@ class HealthPotion extends AbstractPotion {
   override def use(): Unit =
     println(s"$name consumed. Restored $points health points.")
 
-  override val owner: Person = ???
-  override val weight: Int = ???
 }

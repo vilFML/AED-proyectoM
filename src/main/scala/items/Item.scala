@@ -3,13 +3,16 @@ package items
 
 /**
  * Item interface:
- * has name, owner and weight
- * can be used
  */
 trait Item {
+
+  /**
+   * an item has name
+   */
   var name: String
-  val owner: persons.Person
-  val weight: Int
-  
+
+  /**
+   * item has its use
+   */
   def use(): Unit
 }

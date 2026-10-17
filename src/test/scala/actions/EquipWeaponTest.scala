@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package actions
 
+import actions.use.EquipWeapon
+
 import munit.FunSuite
 
 import scala.collection.mutable.ArrayBuffer

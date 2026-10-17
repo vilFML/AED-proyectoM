@@ -1,9 +1,7 @@
 package cl.uchile.dcc
 package map
 
-import cl.uchile.dcc.persons.Person
-
-import scala.collection.mutable.ArrayBuffer
+import persons.Person
 
 /**
  * Trait represents a singular panel
@@ -16,23 +14,24 @@ trait Panel {
   val y: Int
 
   /**
-   * Stores in a (x,y) tuple
+   * Coordinates are stored in a (x,y) tuple
    */
   val coords: Array[Int]
 
   /**
-   * Panel has units inside of it
+   * Panel has a set of units
    */
-  var localUnits: ArrayBuffer[Person]
+  protected val localUnits: Set[Person]
 
-  /** Returns the set of characters inside the panel
-   * @return
+  /**
+   * Panel can output the unit it contains
+   * @return set of units inside
    */
   def getLocalUnits: Set[Person]
 
   /**
-   * returns True if is adjacent to a panel
-   * @return
+   * Panel outputs if a given panel is adjacent
+   * @return true if adyacent
    */
-  def isAdjacent: Boolean
+  def isAdjacent(panel: Panel): Boolean
 }

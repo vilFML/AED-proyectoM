@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package actions
 
+import actions.ofensives.Attack
+
 import munit.FunSuite
 
 import scala.compiletime.uninitialized
@@ -14,6 +16,6 @@ class AttackTest extends FunSuite {
   }
 
   test("attack invoked.") {
-    assertEquals(obtained = action.getActionName(), expected = "Attack")
+    assertEquals(obtained = action.getActionName, expected = "Attack")
   }
 }

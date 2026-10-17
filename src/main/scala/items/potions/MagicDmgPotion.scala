@@ -10,7 +10,4 @@ class MagicDmgPotion extends AbstractPotion{
 
   override def use(): Unit =
     println(s"$name consumed. Increased $points of magic damage.")
-
-  override val owner: Person = ???
-  override val weight: Int = ???
 }

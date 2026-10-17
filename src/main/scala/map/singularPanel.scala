@@ -3,36 +3,51 @@ package map
 
 import persons.Person
 
-import scala.collection.mutable.ArrayBuffer
-
 /**
  * the class of a certain panel
  */
-class singularPanel {
+class singularPanel(inX: Int = 0, inY: Int = 0) extends Panel{
   /**
    * has coordinates
    */
-  val x: Int = 0
-  val y: Int = 0
+  val x: Int = inX
+  val y: Int = inY
 
   /**
-   * (x,y) array
+   * stores (x,y) array
    */
   val coords: Array[Int] = Array[Int](x,y)
 
   /**
    * Panel has units inside
-   * initially no units
+   * starts empty
    */
-  private var localUnits: ArrayBuffer[Person] = ArrayBuffer[Person]()
+  protected val localUnits: Set[Person] = Set[Person]()
 
-  /** Returns a set with pjs inside the current panel
-   *
+  /**
+   * Returns a set with pjs inside the current panel
    * @return set with pjs
    */
-  def getLocalUnits: ArrayBuffer[Person] = {
+  def getLocalUnits: Set[Person] = {
     localUnits
   }
   
-  def isAdjacent: Boolean = ???
+  override def isAdjacent(panel2: Panel): Boolean = {
+    val x1: Int = this.x
+    val y1: Int = this.y
+
+    val x2: Int = panel2.x
+    val y2: Int = panel2.y
+
+    var res: Boolean = false            //defaults to not adjacent
+
+    /**
+     * if cooordinates are 1 tile apart: adjacent
+     */
+    if ( ((x2-x1).abs <= 1) && (y2-y1).abs <= 1 ){
+      res = true
+    }
+    res
+  }
+
 }
