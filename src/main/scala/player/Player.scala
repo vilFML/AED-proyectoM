@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package player
 
-import persons.Person
+import persons.Entity
 
 
 /**
@@ -11,7 +11,7 @@ trait Player {
   /**
    * A player has a set of active units
    */
-  protected val units: Set[Person]
+  protected val units: Set[Entity]
 
   /**
    * a player can get its amount of active units

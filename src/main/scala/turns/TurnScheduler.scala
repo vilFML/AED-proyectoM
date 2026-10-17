@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package turns
 
-import persons.Person
+import persons.Entity
 
 import scala.collection.mutable
 
@@ -13,7 +13,7 @@ class TurnScheduler extends TurnSchedulerTrait {
   /**
    * Stores pjs names with its reference, starts empty
    */
-  private val managedCharacters: mutable.Map[String, Person] = mutable.Map[String, Person]()
+  private val managedCharacters: mutable.Map[String, Entity] = mutable.Map[String, Entity]()
 
   /**
    * stores pjs max action points,
@@ -25,12 +25,12 @@ class TurnScheduler extends TurnSchedulerTrait {
    * stores the unique character in turn
    * starts with no character
    */
-  private var currentlyInTurnCharacter: Option[Person] = None
+  private var currentlyInTurnCharacter: Option[Entity] = None
   
   /**
    * add unit to set
    */
-  override def addUnit(character: Person): Unit = {
+  override def addUnit(character: Entity): Unit = {
     val nameToAdd: String = character.name
 
     managedCharacters(nameToAdd) = character                                     //stores reference to pj
@@ -40,7 +40,7 @@ class TurnScheduler extends TurnSchedulerTrait {
   /**
    * remove unit from set
    */
-  override def removeUnit(character: Person): Unit = {
+  override def removeUnit(character: Entity): Unit = {
     val nameToRemove: String = character.name
     
     managedCharacters -= nameToRemove
@@ -51,7 +51,7 @@ class TurnScheduler extends TurnSchedulerTrait {
    * @param character the pj to check
    * @return true if it is in turn
    */
-  def isInTurn(character: Person): Boolean = {
+  def isInTurn(character: Entity): Boolean = {
     var res: Boolean = false
 
     if currentlyInTurnCharacter.isEmpty then                                    //no char in-turn
@@ -85,13 +85,16 @@ class TurnScheduler extends TurnSchedulerTrait {
   /**
    * restart units action bars
    */
-  override def rebootActionBars(character: Person): Unit =
-    for pj <- managedCharacters.values do pj.rebootActionBar()
+  override def rebootActionBars(character: Entity): Unit =
+    character.rebootActionBar()
 
   override def increaseActionBars(amount: Float): Unit =
-    for pj <- managedCharacters.values do pj.increaseActionPoints(amount)
-
-  override def notifyCompletedActionBar(character: Person): Unit = {
+    for (pj <- managedCharacters.values) {
+      pj.increaseActionPoints(amount)
+      if (pj.getCurrentActionPoints >= pj.getMaxActionPoints)
+        pj.updateActionBarCompletedStatus(true)
+    }
+  override def notifyCompletedActionBar(character: Entity): Unit = {
     if (character.isActionBarCompleted){
       println(s"${character.toString} completed its action bar.")
     }
@@ -101,8 +104,8 @@ class TurnScheduler extends TurnSchedulerTrait {
   /**
    * output the unit in turn
    */
-  override def getInTurnUnit: Option[Person] = {
-    var returnChar: Option[Person] = None                                       //asumes no char is in turn
+  override def getInTurnUnit: Option[Entity] = {
+    var returnChar: Option[Entity] = None                                       //asumes no char is in turn
     if (currentlyInTurnCharacter.isEmpty) {
       println("There is no character currently in turn.")
     }
@@ -114,7 +117,7 @@ class TurnScheduler extends TurnSchedulerTrait {
     returnChar
   }
 
-  override def setInTurnUnit(character: Person): Boolean = {
+  override def setInTurnUnit(character: Entity): Boolean = {
     var res: Boolean = false
 
     if (isInTurn(character)){                                                   //if pj is already in turn, do nothing

@@ -14,4 +14,14 @@ trait Source {
    * @param target action pointed at
    */
   def doAction(action: Action, target: Target): Unit
+  
+  /**
+   * source gives respective points by role
+   * @return
+   */
+  def attackPower: Double
+
+  def magicPower: Double
+
+  def healPower: Double
 }

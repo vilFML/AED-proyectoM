@@ -1,16 +1,16 @@
 package cl.uchile.dcc
 package persons
 
+import persons.characters.AbstractCharacter
+
+import cl.uchile.dcc.actions.ofensives.Attack
+import cl.uchile.dcc.actions.{Action, Move}
+
 
 /**
  * class for enemy units
  */
-class Enemy extends Person {
-
-  /**
-   *  name defaults to "Enemy"
-   */
-  var name: String = "Enemy"
+class Enemy(name: String = "Enemy") extends AbstractCharacter(name) {
 
   /**
    *  starts with 100 health points
@@ -27,11 +27,10 @@ class Enemy extends Person {
    */
   var defensePoints: Int = 20
 
-  /**
-   * weight defaults to 30
-   */
-  private var weight: Float = 30.0
-
+  var weight: Int = 30
+  val role: String = "Enemy"
+  override val attackType: String = "Physical"
+  
   /**
    * is always hostile
    */
@@ -40,7 +39,7 @@ class Enemy extends Person {
   /**
    * every enemy is hostile
    */
-  def getHostility: Boolean =
+  override def getHostility: Boolean =
     isHostile
 
   /**
@@ -54,13 +53,17 @@ class Enemy extends Person {
    */
   val currentActionPoints: Float = maxActionPoints
 
-  def getWeight: Float =
+  override def getWeight: Float =
     this.weight
 
   /**
    * calculate the max action points for the PJ
    */
-  def getMaxActionPoints: Float =
-    100 - this.weight
+  override def getMaxActionPoints: Float =
+    100f - weight
+
+  override protected val availableActions: List[Action] =
+    List(new Attack, new Move)
+
 }
 

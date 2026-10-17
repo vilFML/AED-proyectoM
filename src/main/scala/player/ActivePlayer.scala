@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package player
 
-import persons.Person
+import persons.Entity
 
 /**
  * an in-game player
@@ -11,7 +11,7 @@ class ActivePlayer extends Player {
   /**
    * Starts with an empty set of units
    */
-  override val units: Set[Person] = Set[Person]()
+  override val units: Set[Entity] = Set[Entity]()
     
   /**
    * a player can get its amount of active units

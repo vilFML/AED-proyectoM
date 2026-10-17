@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package turns
 
-import persons.Person
+import persons.Entity
 
 import scala.collection.mutable.ListBuffer
 
@@ -12,17 +12,17 @@ trait TurnSchedulerTrait {
   /**
    * add unit
    */
-  def addUnit(character: Person): Unit
+  def addUnit(character: Entity): Unit
 
   /**
    * remove unit
    */
-  def removeUnit(character: Person): Unit
+  def removeUnit(character: Entity): Unit
 
   /**
    * get if pj is currently in its turn
    */
-  def isInTurn(character: Person): Boolean
+  def isInTurn(character: Entity): Boolean
 
   /**
    * to get the size of the in-turn character set
@@ -39,7 +39,7 @@ trait TurnSchedulerTrait {
   /**
    * restart units action bars
    */
-  def rebootActionBars(character: Person): Unit
+  def rebootActionBars(character: Entity): Unit
 
   /**
    * increase every action bar by a magnitude
@@ -49,7 +49,7 @@ trait TurnSchedulerTrait {
   /**
    * signal if a unit completed its action bar
    */
-  def notifyCompletedActionBar(character: Person): Unit
+  def notifyCompletedActionBar(character: Entity): Unit
 
   /**
    * output units with completed action bars
@@ -62,11 +62,11 @@ trait TurnSchedulerTrait {
    * output the unit in turn
    * gives access to the object
    */
-  def getInTurnUnit: Option[Person]
+  def getInTurnUnit: Option[Entity]
 
   /**
    * can modify the currently in-turn character
    * returns true if changed pj
    */
-  def setInTurnUnit(character: Person): Boolean
+  def setInTurnUnit(character: Entity): Boolean
 }

@@ -3,6 +3,8 @@ package actions.use
 
 import actions.use.AbstractUse
 
+import cl.uchile.dcc.controller.{Source, Target}
+
 import scala.collection.mutable.ArrayBuffer
 
 class ConsumePotion extends AbstractUse {
@@ -15,4 +17,8 @@ class ConsumePotion extends AbstractUse {
    * action to use items requires a list of items
    */
   var usables: ArrayBuffer[String] = ArrayBuffer.empty[String]
+
+
+  override def doAction(source: Source, target: Target): Unit =
+    target.receiveConsumePotion(this, source)
 }

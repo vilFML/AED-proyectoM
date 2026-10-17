@@ -3,12 +3,14 @@ package persons
 
 import actions.Action
 
+import cl.uchile.dcc.controller.{Source, Target}
+
 /**
  * Person interface
  *  represent every game unit
  */
 
-trait Person {
+trait Entity extends Source with Target{
   /**
    * has a name
    */
@@ -87,9 +89,8 @@ trait Person {
   def updateActionBarCompletedStatus(newStatus: Boolean): Boolean
 
   /**
-   * calls doAction for double dispatch
-   * @param action to do
-   * @param target who is affected by the action
+   * Actions the unit can execute
+   * @return available actions
    */
-  def useAction(action: Action, target: Person): Unit
+  def getAvailableActions: List[Action]
 }

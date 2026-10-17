@@ -3,12 +3,18 @@ package persons.characters
 
 import items.potions.Consumable
 import items.weapons.Weapon
-import persons.Person
+import persons.Entity
+
+import cl.uchile.dcc.actions.{Action, Move}
+import cl.uchile.dcc.actions.ofensives.{Attack, Meteor, Thunder}
+import cl.uchile.dcc.actions.support.{Cure, Purification}
+import cl.uchile.dcc.actions.use.{ConsumePotion, EquipWeapon}
+import cl.uchile.dcc.controller.{AbstractSource, Source}
 
 /**
  * specializes a playable character
  */
-abstract class AbstractCharacter(val name: String) extends Person {
+abstract class AbstractCharacter(val name: String) extends AbstractSource with Entity {
 
   /**
    * text representation of pj
@@ -110,8 +116,10 @@ abstract class AbstractCharacter(val name: String) extends Person {
   override def getWeight: Float =
     this.weight
 
-  override def rebootActionBar(): Unit =
-    currentActionPoints = maxActionPoints                                      //replaces the current action point with the max
+  override def rebootActionBar(): Unit = {
+    currentActionPoints = maxActionPoints                                  //replaces the current action point with the max
+    actionBarCompleted = false
+  }
 
   override def increaseActionPoints(amount: Float): Unit =
     currentActionPoints += amount                                               //sums the amount to increase
@@ -138,4 +146,45 @@ abstract class AbstractCharacter(val name: String) extends Person {
 
   }
 
+  /**
+   * base getters, role overrides
+   *  @return respective point
+   */
+  override def attackPower: Double = attackPoints.toDouble
+  override def magicPower: Double = attackPoints.toDouble
+  override def healPower: Double = 0.0
+
+  /**
+   * store role's actions
+   */
+  protected val availableActions: List[Action]
+  override def getAvailableActions: List[Action] = availableActions
+
+  /**
+   * character receives damage
+   * @param raw dmg to process
+   */
+  protected def applyDamage(raw: Double): Unit = {
+    val dmg = math.max(0.0, raw - defensePoints).toInt
+    healthPoints = math.max(0, healthPoints - dmg)
+  }
+
+  /**
+   * receive dispatches
+   * @param 
+   * @param source
+   */
+  override def receiveAttack(attack: Attack, source: Source): Unit =
+    applyDamage(attack.basePower + source.attackPower)
+  override def receiveThunder(thunder: Thunder, source: Source): Unit =
+    applyDamage(thunder.basePower + source.magicPower)
+  override def receiveMeteor(metheor: Meteor, source: Source): Unit =
+    applyDamage(metheor.basePower + source.magicPower)
+  override def receiveCure(cure: Cure, source: Source): Unit =
+    healthPoints += (cure.baseHeal + source.healPower).toInt
+
+  override def receivePurification(p: Purification, source: Source): Unit = ()
+  override def receiveMove(move: Move, source: Source): Unit = ()
+  override def receiveEquipWeapon(e: EquipWeapon, source: Source): Unit = ()
+  override def receiveConsumePotion(c: ConsumePotion, source: Source): Unit = ()
 }

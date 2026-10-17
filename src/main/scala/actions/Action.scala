@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package actions
 
-import persons.Person
+import persons.Entity
 
 import cl.uchile.dcc.controller.{Source, Target}
 

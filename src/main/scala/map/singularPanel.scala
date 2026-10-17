@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package map
 
-import persons.Person
+import persons.Entity
 
 /**
  * the class of a certain panel
@@ -22,13 +22,13 @@ class singularPanel(inX: Int = 0, inY: Int = 0) extends Panel{
    * Panel has units inside
    * starts empty
    */
-  protected val localUnits: Set[Person] = Set[Person]()
+  protected val localUnits: Set[Entity] = Set[Entity]()
 
   /**
    * Returns a set with pjs inside the current panel
    * @return set with pjs
    */
-  def getLocalUnits: Set[Person] = {
+  def getLocalUnits: Set[Entity] = {
     localUnits
   }
   

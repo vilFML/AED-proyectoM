@@ -6,6 +6,10 @@ import actions.AbstractAction
 /**
  * encapsulate support actions
  */
-abstract class AbstractSupportAction extends AbstractAction{
+abstract class AbstractSupportAction extends AbstractAction {
 
+  /**
+   * points to heal
+   */
+  val baseHeal: Double
 }

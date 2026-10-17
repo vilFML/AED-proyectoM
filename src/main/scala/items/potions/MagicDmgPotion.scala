@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package items.potions
 
-import persons.Person
+import persons.Entity
 
 class MagicDmgPotion extends AbstractPotion{
   var name: String = "Magic Damage Potion"

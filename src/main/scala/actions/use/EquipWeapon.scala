@@ -3,6 +3,8 @@ package actions.use
 
 import actions.use.AbstractUse
 
+import cl.uchile.dcc.controller.{Source, Target}
+
 import scala.collection.mutable.ArrayBuffer
 
 class EquipWeapon extends AbstractUse {
@@ -16,4 +18,8 @@ class EquipWeapon extends AbstractUse {
    * starts empty
    */
   var usables: ArrayBuffer[String] = ArrayBuffer.empty[String]
+
+
+  override def doAction(source: Source, target: Target): Unit =
+    target.receiveEquipWeapon(this, source)
 }

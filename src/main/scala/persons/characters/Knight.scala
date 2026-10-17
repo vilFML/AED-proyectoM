@@ -1,6 +1,11 @@
 package cl.uchile.dcc
 package persons.characters
 
+import actions.{Action, Move}
+
+import cl.uchile.dcc.actions.ofensives.Attack
+import cl.uchile.dcc.actions.use.{ConsumePotion, EquipWeapon}
+
 /**
  * 
  * @param name assign name when created
@@ -15,4 +20,8 @@ class Knight(name: String = "Knight") extends AbstractCharacter(name) {
   override val attackType: String = "Physical"
   val role: String = "Knight"
 
+  override def attackPower: Double = attackPoints * 1.5
+
+  override protected val availableActions: List[Action] =
+    List(new Attack, new Move, new EquipWeapon, new ConsumePotion)
 }
