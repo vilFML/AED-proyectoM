@@ -3,6 +3,8 @@ package actions
 
 import persons.Person
 
+import cl.uchile.dcc.controller.{Source, Target}
+
 /**
  * Trait represent any action
  */
@@ -18,7 +20,9 @@ trait Action {
   def getActionName: String
 
   /**
-   * main method for interaction
+   * action resolves its invoker and its target
+   * @param source entity doing
+   * @param target affected 
    */
-  def doAction(target: Person): Unit
+  def doAction(source: Source, target: Target): Unit
 }

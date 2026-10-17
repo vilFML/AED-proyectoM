@@ -4,7 +4,7 @@ package actions.ofensives
 /**
  * a thunder cast
  */
-class Thunder extends AbstractOfensiveAction {
+class Thunder extends AbstractOffensiveAction {
 
   /**
    * has a name

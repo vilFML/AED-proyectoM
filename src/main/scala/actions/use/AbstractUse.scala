@@ -3,6 +3,8 @@ package actions.use
 
 import actions.Action
 
+import cl.uchile.dcc.controller.{Source, Target}
+
 import scala.collection.mutable.ArrayBuffer
 
 abstract class AbstractUse extends Action {
@@ -23,4 +25,6 @@ abstract class AbstractUse extends Action {
    */
   override def getActionName: String =
     name
+
+  override def doAction(source: Source, target: Target): Unit = ???
 }

@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package persons
 
+import actions.Action
+
 /**
  * Person interface
  *  represent every game unit
@@ -83,4 +85,11 @@ trait Person {
    * @return true if changed, false if not modified
    */
   def updateActionBarCompletedStatus(newStatus: Boolean): Boolean
+
+  /**
+   * calls doAction for double dispatch
+   * @param action to do
+   * @param target who is affected by the action
+   */
+  def useAction(action: Action, target: Person): Unit
 }

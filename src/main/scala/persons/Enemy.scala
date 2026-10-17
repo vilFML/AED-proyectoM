@@ -5,7 +5,7 @@ package persons
 /**
  * class for enemy units
  */
-class Enemy{
+class Enemy extends Person {
 
   /**
    *  name defaults to "Enemy"

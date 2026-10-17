@@ -4,7 +4,7 @@ package actions.ofensives
 /**
  * represens a casting Metheor action
  */
-class Metheor extends AbstractOfensiveAction {
+class Metheor extends AbstractOffensiveAction {
   /**
    * has a name
    */

@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package actions
 
+import controller.{Source, Target}
+
 abstract class AbstractAction extends Action {
 
   /**
@@ -13,7 +15,7 @@ abstract class AbstractAction extends Action {
    */
   override def getActionName: String =
     name
-    
-    
+
+  override def doAction(source: Source, target: Target): Unit = ???
   
 }
