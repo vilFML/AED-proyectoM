@@ -20,4 +20,6 @@ class Archer(name: String = "Archer") extends AbstractCharacter(name) {
 
   override protected val availableActions: List[Action] =
     List(new Attack, new Move, new EquipWeapon, new ConsumePotion)
+
+  override val allowedWeaponCategories: Set[String] = Set("Bow")
 }

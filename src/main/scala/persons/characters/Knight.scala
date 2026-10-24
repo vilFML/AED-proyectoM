@@ -24,4 +24,9 @@ class Knight(name: String = "Knight") extends AbstractCharacter(name) {
 
   override protected val availableActions: List[Action] =
     List(new Attack, new Move, new EquipWeapon, new ConsumePotion)
+
+  /**
+   * can only wield swords
+   */
+  override val allowedWeaponCategories: Set[String] = Set("Sword")
 }

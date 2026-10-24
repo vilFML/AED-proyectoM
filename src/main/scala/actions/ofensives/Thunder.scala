@@ -14,7 +14,13 @@ class Thunder extends AbstractOffensiveAction {
   override protected val name: String = "Thunder"
 
   override val basePower: Double = 30.0
+  
+  val manaCost: Int = 15
 
-  override def doAction(source: Source, target: Target): Unit =
+  override def doAction(source: Source, target: Target): Unit = {
+    checkBasics(source, target)
+    checkSpell(source, manaCost)
+    source.spendMana(manaCost)
     target.receiveThunder(this, source)
+  }
 }

@@ -4,6 +4,7 @@ package controller
 import turns.{TurnScheduler, TurnSchedulerTrait}
 
 import cl.uchile.dcc.actions.Action
+import cl.uchile.dcc.exceptions.GameException
 import cl.uchile.dcc.persons.Entity
 
 import scala.collection.mutable
@@ -59,19 +60,24 @@ class GameController {
    * @param action to execute
    * @param target pointed at
    */
-  def executeAction(action: Action, target: Target): Unit = {
+  def executeAction(action: Action, target: Target): Boolean = {
     val source = getCurrentUnit.getOrElse(
       throw new IllegalStateException("No unit in turn"))
-    source.doAction(action, target)
-  }
+    try
+      source.doAction(action, target)
+      true
+    catch
+      case e: GameException =>
+        println(s"Action failed: ${e.getMessage}")
+        false
+    }
 
   /**
    * start new game
    */
-  def resetGame(): Unit = {
+  def resetGame(): Unit =
     scheduler = new TurnScheduler
     units.clear()
-  }
 }
 
 

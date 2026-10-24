@@ -22,4 +22,6 @@ class BlackMage(name: String = "Black Mage") extends AbstractMagicCharacter(name
 
   override protected val availableActions: List[Action] =
     List(new Attack, new Thunder, new Meteor, new Move, new ConsumePotion)
+
+  override val allowedWeaponCategories: Set[String] = Set("Rod")
 }

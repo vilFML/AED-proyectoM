@@ -1,10 +1,10 @@
 package cl.uchile.dcc
 package actions.use
 
-import actions.Action
+import actions.AbstractAction
 import scala.collection.mutable.ArrayBuffer
 
-abstract class AbstractUse extends Action {
+abstract class AbstractUse extends AbstractAction {
 
   /**
    * has a name
@@ -23,4 +23,5 @@ abstract class AbstractUse extends Action {
   override def getActionName: String =
     name
 
+  
 }

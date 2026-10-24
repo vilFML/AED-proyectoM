@@ -24,4 +24,5 @@ class WhiteMage(name: String = "White Mage") extends AbstractMagicCharacter(name
   override protected val availableActions: List[Action] =
     List(new Attack, new Cure, new Purification, new Move, new ConsumePotion)
 
+  override val allowedWeaponCategories: Set[String] = Set("Wand")
 }

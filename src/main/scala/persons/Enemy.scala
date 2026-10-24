@@ -65,5 +65,17 @@ class Enemy(name: String = "Enemy") extends AbstractCharacter(name) {
   override protected val availableActions: List[Action] =
     List(new Attack, new Move)
 
+  /**
+   * is always hostile
+   *  @return true
+   */
+  override def isEnemy: Boolean = true
+
+  /**
+   * enemy doesnt need weapon to attack
+   * @return true
+   */
+  override def hasWeapon: Boolean = true
+
 }
 

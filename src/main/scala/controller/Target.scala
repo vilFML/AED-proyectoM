@@ -29,4 +29,11 @@ trait Target {
   def receiveEquipWeapon(equip: EquipWeapon, source: Source): Unit
 
   def receiveConsumePotion(potion: ConsumePotion, source: Source): Unit
+
+  /**
+   * for exception handling
+   */
+  def name: String
+  def isAlive: Boolean
+  def isEnemy: Boolean
 }

@@ -1,11 +1,14 @@
 package cl.uchile.dcc
 package actions
 
-import cl.uchile.dcc.actions.ofensives.{Attack, Thunder}
-import cl.uchile.dcc.actions.support.Cure
-import cl.uchile.dcc.persons.Enemy
-import cl.uchile.dcc.persons.characters.Knight
-import cl.uchile.dcc.persons.characters.magicChars.{BlackMage, WhiteMage}
+import actions.ofensives.{Attack, Thunder}
+import actions.support.Cure
+import items.weapons.magical.{Rod, Wand}
+import items.weapons.physical.Sword
+import persons.Enemy
+import persons.characters.Knight
+import persons.characters.magicChars.{BlackMage, WhiteMage}
+
 import munit.FunSuite
 
 import scala.compiletime.uninitialized
@@ -17,10 +20,14 @@ class DoubleDispatchTest extends FunSuite{
   var enemy: Enemy = uninitialized
 
   override def beforeEach(context: BeforeEach): Unit = {
-    knight = new Knight;
+    knight = new Knight
     blackMage = new BlackMage
-    whiteMage = new WhiteMage;
+    whiteMage = new WhiteMage
     enemy = new Enemy
+    
+    knight.equipWeapon(new Sword())
+    blackMage.equipWeapon(new Rod())
+    whiteMage.equipWeapon(new Wand())
   }
 
   // Different source, same action, same target
