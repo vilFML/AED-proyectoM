@@ -1,8 +1,8 @@
 package cl.uchile.dcc
 package actions.ofensives
 
-import cl.uchile.dcc.controller.{Source, Target}
-import cl.uchile.dcc.exceptions.specializations.MissingWeaponException
+import controller.{Source, Target}
+import exceptions.specializations.MissingWeaponException
 
 /**
  * represents an attacking action

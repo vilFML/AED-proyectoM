@@ -42,19 +42,19 @@ class BlackMageTest extends FunSuite {
 
     assertEquals(blackMage.getCurrentActionPoints, blackMage.getMaxActionPoints )
 
-    test("Black mage can increase its action points by 20"):
-      assertEquals(blackMage.getCurrentActionPoints, blackMage.getMaxActionPoints)
+  test("Black mage can increase its action points by 20"):
+    assertEquals(blackMage.getCurrentActionPoints, blackMage.getMaxActionPoints)
 
-      blackMage.increaseActionPoints(20f)
+    blackMage.increaseActionPoints(20f)
 
-      assertEquals(blackMage.getCurrentActionPoints, 120f)
+    assertEquals(blackMage.getCurrentActionPoints, 120f)
 
-    test("BlackMage starts with false completed action bar"):
-      assertEquals(blackMage.isActionBarCompleted, false)
+  test("BlackMage starts with false completed action bar"):
+    assertEquals(blackMage.isActionBarCompleted, false)
 
-    test("Black mage can change its completed action bar status."){
-      blackMage.updateActionBarCompletedStatus(true)
-      assertEquals(blackMage.isActionBarCompleted, true)
+  test("Black mage can change its completed action bar status."){
+    blackMage.updateActionBarCompletedStatus(true)
+    assertEquals(blackMage.isActionBarCompleted, true)
 
     }
 }

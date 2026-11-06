@@ -31,7 +31,7 @@ trait Panel {
 
   /**
    * Panel outputs if a given panel is adjacent
-   * @return true if adyacent
+   * @return true if adjacent
    */
   def isAdjacent(panel: Panel): Boolean
 }

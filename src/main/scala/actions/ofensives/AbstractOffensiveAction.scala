@@ -3,8 +3,6 @@ package actions.ofensives
 
 import actions.AbstractAction
 
-import cl.uchile.dcc.controller.{Source, Target}
-
 /**
  * encapsulates damage dealing action
  */

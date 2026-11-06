@@ -2,8 +2,7 @@ package cl.uchile.dcc
 package persons
 
 import actions.Action
-
-import cl.uchile.dcc.controller.{Source, Target}
+import controller.{Source, Target}
 
 /**
  * Person interface

@@ -1,11 +1,9 @@
 package cl.uchile.dcc
 package persons.characters.magicChars
 
-import actions.use.ConsumePotion
-
-import cl.uchile.dcc.actions.{Action, Move}
-import cl.uchile.dcc.actions.ofensives.{Attack, Meteor, Thunder}
-import cl.uchile.dcc.actions.support.{Cure, Purification}
+import actions.ofensives.{Attack, Meteor, Thunder}
+import actions.use.{ConsumePotion, EquipWeapon}
+import actions.{Action, Move}
 
 class BlackMage(name: String = "Black Mage") extends AbstractMagicCharacter(name) {
   var healthPoints: Int = 75
@@ -21,7 +19,7 @@ class BlackMage(name: String = "Black Mage") extends AbstractMagicCharacter(name
   override def magicPower: Double = attackPoints * 2.0 + manaPoints * 0.1
 
   override protected val availableActions: List[Action] =
-    List(new Attack, new Thunder, new Meteor, new Move, new ConsumePotion)
+    List(new Attack, new Thunder, new Meteor, new Move, new EquipWeapon, new ConsumePotion)
 
   override val allowedWeaponCategories: Set[String] = Set("Rod")
 }

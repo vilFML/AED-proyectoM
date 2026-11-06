@@ -1,10 +1,9 @@
 package cl.uchile.dcc
 package persons.characters
 
+import actions.ofensives.Attack
+import actions.use.{ConsumePotion, EquipWeapon}
 import actions.{Action, Move}
-
-import cl.uchile.dcc.actions.ofensives.Attack
-import cl.uchile.dcc.actions.use.{ConsumePotion, EquipWeapon}
 
 class Rogue(name: String = "Rogue") extends AbstractCharacter(name) {
   var healthPoints: Int = 50

@@ -1,10 +1,12 @@
 package cl.uchile.dcc
 package controller
 
-import cl.uchile.dcc.actions.ofensives.Attack
-import cl.uchile.dcc.persons.Enemy
-import cl.uchile.dcc.persons.characters.Knight
-import cl.uchile.dcc.persons.characters.magicChars.BlackMage
+import actions.ofensives.Attack
+import items.weapons.physical.Sword
+import persons.Enemy
+import persons.characters.Knight
+import persons.characters.magicChars.BlackMage
+
 import munit.FunSuite
 
 import scala.compiletime.uninitialized
@@ -20,6 +22,7 @@ class GameControllerTest extends FunSuite {
     knight = new Knight
     enemy = new Enemy
     blackMage = new BlackMage
+    knight.equipWeapon(new Sword)
   }
 
   test("no unit in turn at start") {

@@ -97,7 +97,7 @@ class TurnSchedulerTest extends FunSuite {
     assertEquals(result.head._1, "Moon")
 
 
-  test("Only PJ with completed action bars appear in completed actino bar list"):
+  test("Only PJ with completed action bars appear in completed action bar list"):
     pj.updateActionBarCompletedStatus(true)
 
     scheduler.addUnit(pj)

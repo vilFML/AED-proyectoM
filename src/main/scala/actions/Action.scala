@@ -1,9 +1,7 @@
 package cl.uchile.dcc
 package actions
 
-import persons.Entity
-
-import cl.uchile.dcc.controller.{Source, Target}
+import controller.{Source, Target}
 
 /**
  * Trait represent any action

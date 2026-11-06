@@ -2,9 +2,8 @@ package cl.uchile.dcc
 package controller
 
 import actions.Action
-
-import cl.uchile.dcc.items.weapons.Weapon
-import cl.uchile.dcc.map.Panel
+import items.weapons.Weapon
+import map.Panel
 
 /**
  * interface for action source

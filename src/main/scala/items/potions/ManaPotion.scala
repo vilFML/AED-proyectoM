@@ -1,8 +1,6 @@
 package cl.uchile.dcc
 package items.potions
 
-import persons.Entity
-
 /**
  * Mana potion restores 10 mana points
  */

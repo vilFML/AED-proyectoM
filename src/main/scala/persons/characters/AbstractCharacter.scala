@@ -1,16 +1,16 @@
 package cl.uchile.dcc
 package persons.characters
 
+import actions.ofensives.{Attack, Meteor, Thunder}
+import actions.support.{Cure, Purification}
+import actions.use.{ConsumePotion, EquipWeapon}
+import actions.{Action, Move}
+import controller.{AbstractSource, Source}
+import exceptions.specializations.InvalidWeaponException
 import items.potions.Consumable
 import items.weapons.Weapon
+import map.Panel
 import persons.Entity
-
-import cl.uchile.dcc.actions.{Action, Move}
-import cl.uchile.dcc.actions.ofensives.{Attack, Meteor, Thunder}
-import cl.uchile.dcc.actions.support.{Cure, Purification}
-import cl.uchile.dcc.actions.use.{ConsumePotion, EquipWeapon}
-import cl.uchile.dcc.controller.{AbstractSource, Source}
-import cl.uchile.dcc.map.Panel
 
 /**
  * specializes a playable character
@@ -84,7 +84,7 @@ abstract class AbstractCharacter(val name: String) extends AbstractSource with E
    */
   override def calculateMaxActionPoints(): Unit = {
     //initialize action points parameters
-    val baseMax: Float = 1000f
+    val baseMax: Float = 100f
     var maxPoints: Float = 0 //for return
 
     //store weights
@@ -251,8 +251,12 @@ abstract class AbstractCharacter(val name: String) extends AbstractSource with E
   override def canEquip(weapon: Weapon): Boolean =
     allowedWeaponCategories.contains(weapon.category)
 
-  override def equipWeapon(weapon: Weapon): Unit =
+  override def equipWeapon(weapon: Weapon): Unit = {
+    if (canEquip(weapon) == false)
+      throw new InvalidWeaponException(s"$name cannot equip ${weapon.name}.")
+
     equippedWeapon = Some(weapon)
+  }
 
   /**
    * non-magical chars cannot use mana

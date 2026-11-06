@@ -1,10 +1,7 @@
 package cl.uchile.dcc
 package actions.use
 
-import actions.use.AbstractUse
-
-import cl.uchile.dcc.controller.{Source, Target}
-
+import controller.{Source, Target}
 import scala.collection.mutable.ArrayBuffer
 
 class ConsumePotion extends AbstractUse {

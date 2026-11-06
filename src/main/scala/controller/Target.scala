@@ -1,8 +1,6 @@
 package cl.uchile.dcc
 package controller
 
-import actions.ofensives.{AbstractOffensiveAction, Attack}
-
 import actions.Move
 import actions.ofensives.{Attack, Meteor, Thunder}
 import actions.support.{Cure, Purification}

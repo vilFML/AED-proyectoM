@@ -3,8 +3,6 @@ package turns
 
 import persons.Entity
 
-import scala.collection.mutable.ListBuffer
-
 /**
  * Controls game turn logic
  */

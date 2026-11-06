@@ -2,8 +2,7 @@ package cl.uchile.dcc
 package actions
 
 import controller.{Source, Target}
-
-import cl.uchile.dcc.exceptions.specializations.{DefeatedUnitException, InsufficientManaException, MissingWeaponException}
+import exceptions.specializations.{DefeatedUnitException, InsufficientManaException, MissingWeaponException}
 
 abstract class AbstractAction extends Action {
 

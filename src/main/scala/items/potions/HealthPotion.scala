@@ -1,8 +1,6 @@
 package cl.uchile.dcc
 package items.potions
 
-import persons.Entity
-
 /**
  * Health portion restores 10 points of health
  */

@@ -1,11 +1,10 @@
 package cl.uchile.dcc
 package actions.use
 
-import actions.use.AbstractUse
+import controller.{Source, Target}
+import exceptions.specializations.InvalidWeaponException
+import items.weapons.Weapon
 
-import cl.uchile.dcc.controller.{Source, Target}
-import cl.uchile.dcc.exceptions.specializations.InvalidWeaponException
-import cl.uchile.dcc.items.weapons.Weapon
 import scala.collection.mutable.ArrayBuffer
 
 class EquipWeapon extends AbstractUse {
@@ -26,9 +25,6 @@ class EquipWeapon extends AbstractUse {
     checkBasics(source, target)
     if (weapon.isEmpty)
       throw new IllegalStateException("EquipWeapon has no weapon")
-    if (!source.canEquip(weapon.get))
-      throw new InvalidWeaponException(
-        s"${source.name} cannot equip ${weapon.get.name} (${weapon.get.category})")
 
     source.equipWeapon(weapon.get)
     target.receiveEquipWeapon(this, source)

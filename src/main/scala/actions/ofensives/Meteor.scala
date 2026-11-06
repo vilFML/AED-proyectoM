@@ -4,7 +4,7 @@ package actions.ofensives
 import controller.{Source, Target}
 
 /**
- * represens a casting Metheor action
+ * represents a casting Meteor action
  */
 class Meteor extends AbstractOffensiveAction {
   /**

@@ -16,12 +16,6 @@ class TurnScheduler extends TurnSchedulerTrait {
   private val managedCharacters: mutable.Map[String, Entity] = mutable.Map[String, Entity]()
 
   /**
-   * stores pjs max action points,
-   * access by pj name
-   */
-  private val allCurrentActionPoints: mutable.Map[String, Float] = mutable.Map[String, Float]()
-
-  /**
    * stores the unique character in turn
    * starts with no character
    */
@@ -34,7 +28,6 @@ class TurnScheduler extends TurnSchedulerTrait {
     val nameToAdd: String = character.name
 
     managedCharacters(nameToAdd) = character                                     //stores reference to pj
-    allCurrentActionPoints(nameToAdd) = character.getMaxActionPoints            //stores pj max action points
   }
 
   /**
@@ -111,7 +104,7 @@ class TurnScheduler extends TurnSchedulerTrait {
     }
     else{                                                                       //if there is a in-turn pj
       returnChar = currentlyInTurnCharacter                                     //return the object
-      println(s"Currenyly in-turn character: ${returnChar.toString}")           //print the character in turn
+      println(s"Currently in-turn character: ${returnChar.toString}")           //print the character in turn
     }
 
     returnChar

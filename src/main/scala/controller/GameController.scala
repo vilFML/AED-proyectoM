@@ -1,11 +1,10 @@
 package cl.uchile.dcc
 package controller
 
+import actions.Action
+import exceptions.GameException
+import persons.Entity
 import turns.{TurnScheduler, TurnSchedulerTrait}
-
-import cl.uchile.dcc.actions.Action
-import cl.uchile.dcc.exceptions.GameException
-import cl.uchile.dcc.persons.Entity
 
 import scala.collection.mutable
 
