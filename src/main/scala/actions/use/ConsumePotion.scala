@@ -14,7 +14,12 @@ class ConsumePotion extends AbstractUse {
    * action to use items requires a list of items
    */
   var usables: ArrayBuffer[String] = ArrayBuffer.empty[String]
-  
+
+  /**
+   * dispatch call
+   * @param source entity doing
+   * @param target affected
+   */
   override def doAction(source: Source, target: Target): Unit = {
     checkBasics(source, target)
     target.receiveConsumePotion(this, source)

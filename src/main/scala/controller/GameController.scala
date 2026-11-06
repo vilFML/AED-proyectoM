@@ -51,6 +51,11 @@ class GameController {
     }
   }
 
+  /**
+   * stores available action for a unit
+   * @param unit
+   * @return
+   */
   def getAvailableActions(unit: Entity): List[Action] =
     unit.getAvailableActions
 

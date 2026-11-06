@@ -19,6 +19,6 @@ class EnemyTest extends FunSuite {
     assertEquals(enemy.getHostility, true)
 
   test("Enemy gets its max action points"):
-    assertEquals(enemy.getMaxActionPoints, 70f)
+    assertEquals(enemy.getMaxActionPoints, 30f)
 
 }

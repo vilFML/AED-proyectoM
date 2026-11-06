@@ -110,6 +110,11 @@ class TurnScheduler extends TurnSchedulerTrait {
     returnChar
   }
 
+  /**
+   * change character currently in turn
+   * @param character
+   * @return true if changed
+   */
   override def setInTurnUnit(character: Entity): Boolean = {
     var res: Boolean = false
 
@@ -125,7 +130,10 @@ class TurnScheduler extends TurnSchedulerTrait {
     res
   }
 
-
+  /**
+   * check which pj's action bar are completed
+   *  @return a list to store order
+   */
   override def getCompletedActionBarsUnits: List[(String, Float)] =
     // 1. get (name, surplus) of completed action charcts
     val completedSurplus: mutable.ListBuffer[(String, Float)] =

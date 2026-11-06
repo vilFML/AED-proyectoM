@@ -22,7 +22,11 @@ class ActivePlayer extends Player {
     Some(units.size)
   }
 
-
+  /**
+   * communicate defeat to player
+   *  @return True: Defeated
+   *         False: In active game
+   */
   override def getDefeated: Boolean = {
     var res = false
     if (this.getUnitsSize.contains(0)) {

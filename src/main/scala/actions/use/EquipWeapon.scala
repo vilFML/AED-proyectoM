@@ -18,9 +18,19 @@ class EquipWeapon extends AbstractUse {
    * starts empty
    */
   var usables: ArrayBuffer[String] = ArrayBuffer.empty[String]
-  
+
+  /**
+   * weapon to equip,
+   * can be none
+   */
   var weapon: Option[Weapon] = None
-  
+
+  /**
+   * dispatch call for weapon equipping,
+   * checks types by roles
+   * @param source entity doing
+   * @param target affected
+   */
   override def doAction(source: Source, target: Target): Unit = {
     checkBasics(source, target)
     if (weapon.isEmpty)

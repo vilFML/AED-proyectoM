@@ -31,7 +31,12 @@ class singularPanel(inX: Int = 0, inY: Int = 0) extends Panel{
   def getLocalUnits: Set[Entity] = {
     localUnits
   }
-  
+
+  /**
+   * method to check if panel is adjacent
+   * @param panel2
+   *  @return true if adjacent
+   */
   override def isAdjacent(panel2: Panel): Boolean = {
     val x1: Int = this.x
     val y1: Int = this.y

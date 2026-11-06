@@ -2,7 +2,7 @@ package cl.uchile.dcc
 package items
 
 /**
- * Item interface:
+ * Item interface
  */
 trait Item {
 

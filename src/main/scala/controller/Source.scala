@@ -23,8 +23,16 @@ trait Source {
    */
   def attackPower: Double
 
+  /**
+   * source has magic power
+   * @return
+   */
   def magicPower: Double
 
+  /**
+   * source has heal power
+   * @return
+   */
   def healPower: Double
 
   /**

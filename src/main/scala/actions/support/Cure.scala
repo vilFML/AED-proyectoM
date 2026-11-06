@@ -15,10 +15,21 @@ class Cure extends AbstractSupportAction {
    */
   override protected val name: String = "Cure"
 
+  /**
+   * specific heal for cure
+   */
   override val baseHeal: Double = 30.0
-  
+
+  /**
+   * specific mana cost for cure
+   */
   val manaCost: Int = 10
-  
+
+  /**
+   * double dispatch call
+   * @param source entity doing
+   * @param target affected
+   */
   override def doAction(source: Source, target: Target): Unit =
     checkBasics(source, target)
     if (target.isEnemy)

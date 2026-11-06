@@ -53,6 +53,9 @@ class TurnSchedulerTest extends FunSuite {
     val pj1MaxActionPoints: Float = pj.getMaxActionPoints
     val pj2MaxActionPoints: Float = pj2.getMaxActionPoints
 
+    assertEquals(pj1MaxActionPoints, 15f)
+    assertEquals(pj2MaxActionPoints, 20f)
+
     scheduler.calculateAllMaxActionBars()
   }
 
@@ -62,8 +65,8 @@ class TurnSchedulerTest extends FunSuite {
 
     scheduler.increaseActionBars(20f)
 
-    assertEquals(pj.getCurrentActionPoints, 120f)
-    assertEquals(pj2.getCurrentActionPoints, 120f)
+    assertEquals(pj.getCurrentActionPoints, 35f)
+    assertEquals(pj2.getCurrentActionPoints, 40f)
 
   test("Turn scheduler considers there is no character in turn, returns None."):
     assertEquals(scheduler.getInTurnUnit, None)

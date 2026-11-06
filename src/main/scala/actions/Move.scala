@@ -16,6 +16,12 @@ class Move(var destination: Option[Panel] = None) extends AbstractAction {
    */
   override protected val name: String = "Move"
 
+  /**
+   * dispatch call for move action,
+   * verifies panel adjacency and map correctness
+   * @param source entity doing
+   * @param target affected
+   */
   override def doAction(source: Source, target: Target): Unit = {
     checkBasics(source, target)
     if (source.position.isEmpty)
